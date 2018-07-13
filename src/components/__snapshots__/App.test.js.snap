@@ -17,20 +17,14 @@ ShallowWrapper {
     "key": undefined,
     "nodeType": "host",
     "props": Object {
-      "children": <Input
-        onChange={[Function]}
-        type="file"
-/>,
+      "children": <Connect(Track) />,
     },
     "ref": null,
     "rendered": Object {
       "instance": null,
       "key": undefined,
       "nodeType": "class",
-      "props": Object {
-        "onChange": [Function],
-        "type": "file",
-      },
+      "props": Object {},
       "ref": null,
       "rendered": null,
       "type": [Function],
@@ -43,20 +37,14 @@ ShallowWrapper {
       "key": undefined,
       "nodeType": "host",
       "props": Object {
-        "children": <Input
-          onChange={[Function]}
-          type="file"
-/>,
+        "children": <Connect(Track) />,
       },
       "ref": null,
       "rendered": Object {
         "instance": null,
         "key": undefined,
         "nodeType": "class",
-        "props": Object {
-          "onChange": [Function],
-          "type": "file",
-        },
+        "props": Object {},
         "ref": null,
         "rendered": null,
         "type": [Function],

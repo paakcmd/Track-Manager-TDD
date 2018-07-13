@@ -1,3 +1,3 @@
 import { CREATE_TRACK } from './constants';
 
-export const createTrack = (text) => ({ type: CREATE_TRACK, text })
+export const createTrack = (file) => ({ type: CREATE_TRACK, file })
