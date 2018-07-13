@@ -15,7 +15,9 @@ export const trackCalculate = function(numbers, target, goal = []) {
     var number = numbers[j];
     var remaining = numbers.slice(j+1, numbers.length+1);
     var newGoal = goal.slice(0,goal.length);
-    newGoal.push(number)
+    newGoal.push(number);
     trackCalculate(remaining, target, newGoal);
+
   }
+
 };
