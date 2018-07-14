@@ -4,28 +4,34 @@ import { connect } from 'react-redux';
 
 export class Track extends Component {
   display(track) {
-    if (track.length > 0) {
-      return track.map(trackLine => (
-        <tr key={trackLine.time}>
-          <td>{trackLine.time}</td>
-          <td>{trackLine.event}</td>
+    if(track){
+      if (track.length > 0) {
+        return track.map(trackLine => (
+          <tr key={trackLine.time}>
+            <td>{trackLine.time}</td>
+            <td>{trackLine.event}</td>
 
-        </tr>
-      ));
-    } else {
+          </tr>
+        ));
+      } else {
+        return <tr><td>Empty</td><td>Empty</td></tr>
+      }
     }
+
   }
   render() {
     const track = this.props.track;
-    console.log(track);
     return (
       <div>
         <input
-          id="input"
+          className="inputFile"
+          name="file"
+          id="file"
           type="file"
           accept=".txt"
           onChange={e => this.props.createTrack(e.target.files[0])}
         />
+        <label htmlFor="file">Choose a file</label>
         <table>
           <tbody>
             <tr>

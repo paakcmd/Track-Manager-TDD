@@ -22,6 +22,8 @@ export function* trackCalculate(numbers = [], target, goal = []) {
 
 
 export function scheduleMaker(time, track) {
+  console.log('time: ', time);
+  console.log('track: ', track);
   var listOfTrackIndex = [];
   var schedule = [];
   var sum = 0;
@@ -39,11 +41,12 @@ export function scheduleMaker(time, track) {
     }
   }
   schedule.push({ id: 'Network Event', time: 60 });
+  console.log(schedule)
   return schedule;
 }
 
 
-export function timeSum(previousTime = 540, minutes) {
+export function timeSum(previousTime, minutes) {
   return previousTime + minutes;
 }
 

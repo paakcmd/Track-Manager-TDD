@@ -12,10 +12,10 @@ describe('Track', () => {
 
   describe('when user upload file', () => {
     beforeEach(() => {
-      track.find('#input').simulate('change', {target: {files: [0: 'test']}})
+      track.find('#file').simulate('change', {target: {files: [0: 'test']}})
     })
-    it('send file to the reducer', () => {
-      expect(mockCreateTrack).toHaveBeenCalledWith(0);
+    it('triggers action', () => {
+      expect(mockCreateTrack).toHaveBeenCalled();
     })
   })
 })

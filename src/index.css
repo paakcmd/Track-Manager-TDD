@@ -1,0 +1,68 @@
+body {
+  width: 700px;
+  margin: 30px auto;
+  text-align: center;
+  color: #86888a;
+  font-family: 'Roboto', sans-serif;
+}
+
+.inputFile {
+  width: 0.1px;
+  height: 0.1;
+  opacity: 0;
+}
+
+.inputFile + label {
+  font-size: 1.25em;
+  font-weight: 700;
+  color: white;
+  background-color: white;
+  line-height: 100px;
+  display: inline-block;
+  height: 100px;
+  color: #86888a;
+  width: 100%;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.12), 0 0 2px 0 rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.inputFile:focus + label,
+.inputFile + label:hover {
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.3), 0 0 2px 0 rgba(0, 0, 0, 0.6);
+}
+
+table {
+  margin-top: 50px;
+  padding: 20px;
+  width: 100%;
+  background: white;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.12), 0 0 2px 0 rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  border-collapse: collapse;
+}
+tr {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+  border-bottom: 1px solid #f2f2f2;
+}
+
+th {
+  font-size: 18px;
+  color: #fa4251;
+  line-height: 1.4;
+  padding-top: 13px;
+  padding-bottom: 13px;
+}
+td {
+  font-size: 15px;
+  color: #808080;
+  line-height: 1.4;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+tr:first-child {
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.12), 0 0 2px 0 rgba(0, 0, 0, 0.1) !important;
+}
