@@ -1,1 +1,3 @@
 node_modules
+components/__snapshots__
+coverage

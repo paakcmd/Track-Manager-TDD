@@ -1,11 +1,11 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { mount, shallow } from 'enzyme';
 import { Track } from './Track';
 
 describe('Track', () => {
   const mockCreateTrack = jest.fn();
-  const props = { createTrack: mockCreateTrack }
-  const track = shallow(<Track {...props} />);
+  var props = { track:[{time: '9.00', event: 'test'}], createTrack: mockCreateTrack }
+  var track = shallow(<Track {...props} />);
   it('renders properly', () => {
     expect(track).toMatchSnapshot();
   })
@@ -17,5 +17,19 @@ describe('Track', () => {
     it('triggers action', () => {
       expect(mockCreateTrack).toHaveBeenCalled();
     })
+  })
+
+  describe('table generator', () => {
+
+    it('generates list of tracks', () => {
+      expect(track.find('#emptyList').exists()).toBe(false);
+    });
+
+    it('generates empty list when there is no track', () => {
+      props.track = {}
+      track = mount(<Track {...props} />)
+      expect(track.find('#emptyList').exists()).toBe(true);
+    })
+
   })
 })

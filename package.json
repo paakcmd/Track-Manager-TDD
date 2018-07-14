@@ -22,5 +22,14 @@
     "react-dom": "^16.4.1",
     "react-test-renderer": "^16.4.1",
     "redux-mock-store": "^1.5.3"
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "src/**/*.js",
+      "!src/index.js",
+      "!src/setupTests.js",
+      "!src/tempPolyfills.js",
+      "!src/actions/helper/read-file.js"
+    ]
   }
 }

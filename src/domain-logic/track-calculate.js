@@ -22,11 +22,10 @@ export function* trackCalculate(numbers = [], target, goal = []) {
 
 
 export function scheduleMaker(time, track) {
-  console.log('time: ', time);
-  console.log('track: ', track);
   var listOfTrackIndex = [];
   var schedule = [];
   var sum = 0;
+
   for (var i = 0; i < track.length; i++) {
     listOfTrackIndex.push(track[i].id);
     schedule.push(track[i]);
@@ -34,14 +33,13 @@ export function scheduleMaker(time, track) {
   schedule.push({ id: 'Lunch', time: 60 });
   for (var j = 0; j < time.length; j++) {
     if (listOfTrackIndex.indexOf(time[j].id) === -1) {
-      sum = sum + time[j].time;
-      if (sum < 240) {
+      if(sum + time[j].time <= 240){
+        sum = sum + time[j].time;
         schedule.push(time[j]);
       }
     }
   }
   schedule.push({ id: 'Network Event', time: 60 });
-  console.log(schedule)
   return schedule;
 }
 
@@ -51,7 +49,7 @@ export function timeSum(previousTime, minutes) {
 }
 
 
-export function timeDisplay(schedule, text) {
+export function trackDisplay(schedule, text) {
   text = text.split('\n');
   var previousTime = 540;
   var displaySchedule = [];

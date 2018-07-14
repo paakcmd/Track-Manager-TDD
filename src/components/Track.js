@@ -10,14 +10,12 @@ export class Track extends Component {
           <tr key={trackLine.time}>
             <td>{trackLine.time}</td>
             <td>{trackLine.event}</td>
-
           </tr>
         ));
       } else {
-        return <tr><td>Empty</td><td>Empty</td></tr>
+        return <tr id="emptyList"><td>Empty</td><td>Empty</td></tr>
       }
     }
-
   }
   render() {
     const track = this.props.track;
