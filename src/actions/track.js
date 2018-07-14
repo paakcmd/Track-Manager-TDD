@@ -7,7 +7,8 @@ import {
   trackDisplay
 } from '../domain-logic/track-calculate';
 
-// this function is untested because it's extremely hard to mock a real file to test
+//this function is untested because it's extremely hard to mock a real file to test
+//this function read file send result to another function then dispatch result to reducer
 export const createTrack = file => {
   return function(dispatch) {
     readFile(file).then(function(result) {
@@ -17,7 +18,8 @@ export const createTrack = file => {
   };
 };
 
-//seperate createTrackLogic to test because createTrack is extremely hard to mock file
+//seperate createTrackLogic to test because createTrack is extremely hard to mock file to test
+//this function get modify text messages to ready-to-display schedule object
 export function createTrackLogic(result) {
   const time = timeInterpret(result);
   var track = trackCalculate(time, 180).next().value;
@@ -31,6 +33,7 @@ export function createTrackLogic(result) {
   }
 }
 
+//action to reducer
 export function createTrackDispatch(schedule) {
   return {
     type: CREATE_TRACK,

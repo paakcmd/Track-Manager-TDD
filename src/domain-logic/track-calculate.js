@@ -1,3 +1,4 @@
+// Calculate schedule combination using recursive
 export function* trackCalculate(numbers = [], target, goal = []) {
   var sum = 0;
   for (var i = 0; i < goal.length; i++) {
@@ -20,6 +21,7 @@ export function* trackCalculate(numbers = [], target, goal = []) {
   }
 }
 
+//modify schedule and add lunch and network time to object
 export function scheduleMaker(time, track) {
   var listOfTrackIndex = [];
   var schedule = [];
@@ -42,10 +44,12 @@ export function scheduleMaker(time, track) {
   return schedule;
 }
 
+//Sum up time
 export function timeSum(previousTime, minutes) {
   return previousTime + minutes;
 }
 
+//modify schedule to display
 export function trackDisplay(schedule, text) {
   text = text.split('\n');
   var previousTime = 540;

@@ -1,3 +1,4 @@
+// extract time from each sentences and generate object to calculate in the next step
 export const timeInterpret = text => {
   var time = [];
   text = text + '\n';
