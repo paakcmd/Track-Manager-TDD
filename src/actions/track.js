@@ -21,9 +21,14 @@ export const createTrack = file => {
 export function createTrackLogic(result) {
   const time = timeInterpret(result);
   var track = trackCalculate(time, 180).next().value;
-  const schedule = scheduleMaker(time, track);
-  const displaySchedule = trackDisplay(schedule, result);
-  return displaySchedule;
+  if(track){
+    const schedule = scheduleMaker(time, track);
+    const displaySchedule = trackDisplay(schedule, result);
+    return displaySchedule;
+  }
+  else {
+    return [{ time:'sorry', event:'Can\'t generate proper combination of schedule' }]
+  }
 }
 
 export function createTrackDispatch(schedule) {
