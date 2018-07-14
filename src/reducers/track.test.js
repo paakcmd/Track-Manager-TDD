@@ -3,7 +3,7 @@ import { createTrack } from '../actions/track';
 
 describe('trackReducer', () => {
   describe('when initializing', () => {
-    const initialState = { track: {} };
+    const initialState = {};
 
     it('sets an initial state', () => {
       expect(trackReducer(undefined, {})).toEqual(initialState);

@@ -1,15 +1,11 @@
 import { CREATE_TRACK } from '../actions/constants';
 
-const initialState = {
-  tracks: {}
-}
+const initialState = {}
 
 const trackReducer = (state = initialState, action) => {
   switch (action.type) {
     case CREATE_TRACK:
-      console.log("reducerrrrrrr")
-      console.log(action);
-      return state
+      return action.schedule
 
     default:
       return state;

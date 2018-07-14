@@ -32,7 +32,6 @@ export function scheduleMaker(time, track) {
   schedule.push({ id: 'Lunch', time: 60 });
   for (var j = 0; j < time.length; j++) {
     if (listOfTrackIndex.indexOf(time[j].id) === -1) {
-      console.log(listOfTrackIndex.indexOf(time[j].id));
       sum = sum + time[j].time;
       if (sum < 240) {
         schedule.push(time[j]);
