@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 
 export class Track extends Component {
   display(track) {
-    if(track){
+    if (track) {
       if (track.length > 0) {
         return track.map(trackLine => (
           <tr key={trackLine.time}>
@@ -13,7 +13,12 @@ export class Track extends Component {
           </tr>
         ));
       } else {
-        return <tr id="emptyList"><td>Empty</td><td>Empty</td></tr>
+        return (
+          <tr id="emptyList">
+            <td>Empty</td>
+            <td>Empty</td>
+          </tr>
+        );
       }
     }
   }

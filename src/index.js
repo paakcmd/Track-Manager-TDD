@@ -9,7 +9,8 @@ import './index.css';
 
 const createStoreWithMiddleware = applyMiddleware(thunk)(createStore);
 render(
-  <Provider store={createStoreWithMiddleware(trackReducer)} >
-    <App/>
+  <Provider store={createStoreWithMiddleware(trackReducer)}>
+    <App />
   </Provider>,
-  document.getElementById('root'));
+  document.getElementById('root')
+);

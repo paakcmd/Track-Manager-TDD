@@ -12,7 +12,9 @@ describe('trackReducer', () => {
 
     it('sets a state when receive CREATE_TRACK', () => {
       const schedule = 'schedule';
-      expect(trackReducer(undefined, { type: CREATE_TRACK, schedule })).toEqual(schedule);
+      expect(trackReducer(undefined, { type: CREATE_TRACK, schedule })).toEqual(
+        schedule
+      );
     });
   });
 });

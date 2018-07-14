@@ -20,7 +20,6 @@ export function* trackCalculate(numbers = [], target, goal = []) {
   }
 }
 
-
 export function scheduleMaker(time, track) {
   var listOfTrackIndex = [];
   var schedule = [];
@@ -33,7 +32,7 @@ export function scheduleMaker(time, track) {
   schedule.push({ id: 'Lunch', time: 60 });
   for (var j = 0; j < time.length; j++) {
     if (listOfTrackIndex.indexOf(time[j].id) === -1) {
-      if(sum + time[j].time <= 240){
+      if (sum + time[j].time <= 240) {
         sum = sum + time[j].time;
         schedule.push(time[j]);
       }
@@ -43,11 +42,9 @@ export function scheduleMaker(time, track) {
   return schedule;
 }
 
-
 export function timeSum(previousTime, minutes) {
   return previousTime + minutes;
 }
-
 
 export function trackDisplay(schedule, text) {
   text = text.split('\n');

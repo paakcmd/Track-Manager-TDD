@@ -1,6 +1,6 @@
 import { CREATE_TRACK } from '../actions/constants';
 
-const initialState = {}
+const initialState = {};
 
 const trackReducer = (state = initialState, action) => {
   switch (action.type) {
