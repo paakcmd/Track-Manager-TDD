@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 
 export class Track extends Component {
   render() {
+    console.log(this.props)
     return (
       <div>
         <input
@@ -12,13 +13,12 @@ export class Track extends Component {
           accept=".txt"
           onChange={e => this.props.createTrack(e.target.files[0])}
         />
-        {this.props.track}
       </div>
     );
   }
 }
 
 export default connect(
-  null,
+  state => { return { track: state } },
   { createTrack }
 )(Track);
