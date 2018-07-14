@@ -10,9 +10,12 @@ const initialState = {
 const trackReducer = (state = initialState, action) => {
   switch (action.type) {
     case CREATE_TRACK:
-      var a = trackCalculate([9,6,2,4,1],15)
-      console.log(a);
-      readFile(action.file).then(result => timeInterpret(result))
+      readFile(action.file).then(function(result) {
+        const time = timeInterpret(result)
+        const test = [{id:0,time:45},{id:1,time:30},{id:2,time:40},{id:3,time:20},{id:2,time:10}]
+        var a = trackCalculate(time,420).next().value;
+        console.log(a)
+      })
       return state;
     default:
       return state;

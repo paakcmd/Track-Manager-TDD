@@ -10,7 +10,7 @@ Woah 30min
 Sit Down and Write 30min
 Pair Programming vs Noise 45min
 Rails Magic 60min
-Ruby on Rails: Why We Should Move On 60min
+Ruby on Rails: Why We Should Move On 600min
 Clojure Ate Scala (on my project) 45min
 Programming in the Boondocks of Seattle 30min
 Ruby vs. Clojure for Back-End Development 30min

@@ -1,23 +1,22 @@
-export const trackCalculate = function(numbers, target, goal = []) {
+export function * trackCalculate(numbers = [],target, goal = []) {
   var sum = 0;
   for (var i = 0; i < goal.length; i++) {
-    sum += goal[i];
+    sum += goal[i].time;
   }
 
   if (sum === target) {
-    console.log(goal)
+    yield goal
   }
-  if (sum >= target) {
+  if (sum > target) {
     return
   }
 
   for (var j = 0; j < numbers.length; j++) {
     var number = numbers[j];
-    var remaining = numbers.slice(j+1, numbers.length+1);
+    var remaining = numbers.slice(j+1, numbers.length);
     var newGoal = goal.slice(0,goal.length);
     newGoal.push(number);
-    trackCalculate(remaining, target, newGoal);
-
+    yield * trackCalculate(remaining,target ,newGoal);
   }
 
-};
+}

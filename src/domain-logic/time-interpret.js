@@ -1,10 +1,14 @@
 export const timeInterpret = text => {
-  var time = {}
+  var time = [];
   text = text.split('\n');
   for(var i = 0;i < text.length-1 ;i++){
-    text[i] = text[i].replace('lightning','5min');
-    var index = text[i].indexOf('min');
-    time[i] = text[i].substring(index-2,index);
+    text[i] = text[i].replace('lightning',' 5min');
+    var patt = /\d+min/g;
+    var word = String(text[i].match(patt));
+    var timeSlot = {}
+    timeSlot.id = i;
+    timeSlot.time = parseInt(word.replace('min',''));
+    time.push(timeSlot);
   }
   return time
 }
