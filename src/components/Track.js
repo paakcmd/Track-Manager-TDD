@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { createTrack } from '../actions/track';
+import { createTrack, showTrackByCurrentTrack } from '../actions/track';
 import { connect } from 'react-redux';
 
 export class Track extends Component {
@@ -24,6 +24,13 @@ export class Track extends Component {
   }
   render() {
     const track = this.props.track;
+    const {
+      display,
+      lengthOfAllTrack,
+      file,
+      currentTrack,
+      allTrack
+    } = track;
     return (
       <div>
         <input
@@ -41,9 +48,41 @@ export class Track extends Component {
               <th>Time</th>
               <th>Event</th>
             </tr>
-            {this.display(track)}
+            {this.display(display)}
           </tbody>
         </table>
+        <h3>
+          {' '}
+          {lengthOfAllTrack ? `${currentTrack}/${lengthOfAllTrack}` : ''}{' '}
+        </h3>
+        <button
+          onClick={() =>
+            currentTrack > 1
+              ? this.props.showTrackByCurrentTrack(
+                  file,
+                  currentTrack - 1,
+                  allTrack[currentTrack]
+                )
+              : ''
+          }
+        >
+          {' '}
+          back{' '}
+        </button>
+        <button
+          onClick={() =>
+            currentTrack < lengthOfAllTrack
+              ? this.props.showTrackByCurrentTrack(
+                  file,
+                  currentTrack + 1,
+                  allTrack[currentTrack]
+                )
+              : ''
+          }
+        >
+          {' '}
+          next{' '}
+        </button>
       </div>
     );
   }
@@ -53,5 +92,5 @@ export default connect(
   state => {
     return { track: state };
   },
-  { createTrack }
+  { createTrack, showTrackByCurrentTrack }
 )(Track);

@@ -7,12 +7,14 @@ ShallowWrapper {
   Symbol(enzyme.__unrendered__): <Track
     createTrack={[Function]}
     track={
-        Array [
-            Object {
-              "event": "test",
-              "time": "9.00",
-            },
-          ]
+        Object {
+            "display": Array [
+              Object {
+                "event": "test",
+                "time": "9.00",
+              },
+            ],
+          }
     }
 />,
   Symbol(enzyme.__renderer__): Object {
@@ -61,6 +63,25 @@ ShallowWrapper {
                     </tr>
           </tbody>
 </table>,
+        <h3>
+           
+          
+           
+</h3>,
+        <button
+          onClick={[Function]}
+>
+           
+          back
+           
+</button>,
+        <button
+          onClick={[Function]}
+>
+           
+          next
+           
+</button>,
       ],
     },
     "ref": null,
@@ -233,6 +254,65 @@ ShallowWrapper {
         },
         "type": "table",
       },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": Array [
+            " ",
+            "",
+            " ",
+          ],
+        },
+        "ref": null,
+        "rendered": Array [
+          " ",
+          "",
+          " ",
+        ],
+        "type": "h3",
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": Array [
+            " ",
+            "back",
+            " ",
+          ],
+          "onClick": [Function],
+        },
+        "ref": null,
+        "rendered": Array [
+          " ",
+          "back",
+          " ",
+        ],
+        "type": "button",
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": Array [
+            " ",
+            "next",
+            " ",
+          ],
+          "onClick": [Function],
+        },
+        "ref": null,
+        "rendered": Array [
+          " ",
+          "next",
+          " ",
+        ],
+        "type": "button",
+      },
     ],
     "type": "div",
   },
@@ -276,6 +356,25 @@ ShallowWrapper {
                         </tr>
             </tbody>
 </table>,
+          <h3>
+             
+            
+             
+</h3>,
+          <button
+            onClick={[Function]}
+>
+             
+            back
+             
+</button>,
+          <button
+            onClick={[Function]}
+>
+             
+            next
+             
+</button>,
         ],
       },
       "ref": null,
@@ -447,6 +546,65 @@ ShallowWrapper {
             "type": "tbody",
           },
           "type": "table",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": Array [
+              " ",
+              "",
+              " ",
+            ],
+          },
+          "ref": null,
+          "rendered": Array [
+            " ",
+            "",
+            " ",
+          ],
+          "type": "h3",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": Array [
+              " ",
+              "back",
+              " ",
+            ],
+            "onClick": [Function],
+          },
+          "ref": null,
+          "rendered": Array [
+            " ",
+            "back",
+            " ",
+          ],
+          "type": "button",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": Array [
+              " ",
+              "next",
+              " ",
+            ],
+            "onClick": [Function],
+          },
+          "ref": null,
+          "rendered": Array [
+            " ",
+            "next",
+            " ",
+          ],
+          "type": "button",
         },
       ],
       "type": "div",

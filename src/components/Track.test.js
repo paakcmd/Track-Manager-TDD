@@ -5,7 +5,7 @@ import { Track } from './Track';
 describe('Track', () => {
   const mockCreateTrack = jest.fn();
   var props = {
-    track: [{ time: '9.00', event: 'test' }],
+    track: { display: [{ time: '9.00', event: 'test' }] },
     createTrack: mockCreateTrack
   };
   var track = shallow(<Track {...props} />);
@@ -30,7 +30,7 @@ describe('Track', () => {
     });
 
     it('generates empty list when there is no track', () => {
-      props.track = {};
+      props.track.display = {};
       track = mount(<Track {...props} />);
       expect(track.find('#emptyList').exists()).toBe(true);
     });
