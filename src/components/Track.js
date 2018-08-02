@@ -6,12 +6,21 @@ export class Track extends Component {
   display(track, currentTrack) {
     if (track) {
       if (track.length > 0) {
-        return track[currentTrack].map(trackLine => (
-          <tr key={trackLine.time}>
-            <td>{trackLine.time}</td>
-            <td>{trackLine.event}</td>
-          </tr>
-        ));
+        try {
+          return track[currentTrack].map(trackLine => (
+            <tr key={trackLine.time}>
+              <td>{trackLine.time}</td>
+              <td>{trackLine.event}</td>
+            </tr>
+          ));
+        } catch (err) {
+          return track.map(trackLine => (
+            <tr key={trackLine.time}>
+              <td>{trackLine.time}</td>
+              <td>{trackLine.event}</td>
+            </tr>
+          ));
+        }
       } else {
         return (
           <tr id="emptyList">
@@ -24,11 +33,7 @@ export class Track extends Component {
   }
   render() {
     const track = this.props.track;
-    const {
-      display,
-      currentTrack
-    } = track;
-    console.log(display)
+    const { display, currentTrack } = track;
     return (
       <div>
         <input
@@ -55,9 +60,7 @@ export class Track extends Component {
         <button
           onClick={() =>
             currentTrack > 0
-              ? this.props.changeCurrentTrack(
-                  currentTrack - 1,
-                )
+              ? this.props.changeCurrentTrack(currentTrack - 1)
               : ''
           }
         >
@@ -65,10 +68,8 @@ export class Track extends Component {
         </button>
         <button
           onClick={() =>
-            currentTrack < display.length-1
-              ? this.props.changeCurrentTrack(
-                  currentTrack + 1
-                )
+            currentTrack < display.length - 1
+              ? this.props.changeCurrentTrack(currentTrack + 1)
               : ''
           }
         >

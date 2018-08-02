@@ -64,23 +64,17 @@ ShallowWrapper {
           </tbody>
 </table>,
         <h3>
-           
-          
-           
+          NaN/1
 </h3>,
         <button
           onClick={[Function]}
 >
-           
           back
-           
 </button>,
         <button
           onClick={[Function]}
 >
-           
           next
-           
 </button>,
       ],
     },
@@ -259,18 +253,10 @@ ShallowWrapper {
         "key": undefined,
         "nodeType": "host",
         "props": Object {
-          "children": Array [
-            " ",
-            "",
-            " ",
-          ],
+          "children": "NaN/1",
         },
         "ref": null,
-        "rendered": Array [
-          " ",
-          "",
-          " ",
-        ],
+        "rendered": "NaN/1",
         "type": "h3",
       },
       Object {
@@ -278,19 +264,11 @@ ShallowWrapper {
         "key": undefined,
         "nodeType": "host",
         "props": Object {
-          "children": Array [
-            " ",
-            "back",
-            " ",
-          ],
+          "children": "back",
           "onClick": [Function],
         },
         "ref": null,
-        "rendered": Array [
-          " ",
-          "back",
-          " ",
-        ],
+        "rendered": "back",
         "type": "button",
       },
       Object {
@@ -298,19 +276,11 @@ ShallowWrapper {
         "key": undefined,
         "nodeType": "host",
         "props": Object {
-          "children": Array [
-            " ",
-            "next",
-            " ",
-          ],
+          "children": "next",
           "onClick": [Function],
         },
         "ref": null,
-        "rendered": Array [
-          " ",
-          "next",
-          " ",
-        ],
+        "rendered": "next",
         "type": "button",
       },
     ],
@@ -357,23 +327,17 @@ ShallowWrapper {
             </tbody>
 </table>,
           <h3>
-             
-            
-             
+            NaN/1
 </h3>,
           <button
             onClick={[Function]}
 >
-             
             back
-             
 </button>,
           <button
             onClick={[Function]}
 >
-             
             next
-             
 </button>,
         ],
       },
@@ -552,18 +516,10 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "host",
           "props": Object {
-            "children": Array [
-              " ",
-              "",
-              " ",
-            ],
+            "children": "NaN/1",
           },
           "ref": null,
-          "rendered": Array [
-            " ",
-            "",
-            " ",
-          ],
+          "rendered": "NaN/1",
           "type": "h3",
         },
         Object {
@@ -571,19 +527,11 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "host",
           "props": Object {
-            "children": Array [
-              " ",
-              "back",
-              " ",
-            ],
+            "children": "back",
             "onClick": [Function],
           },
           "ref": null,
-          "rendered": Array [
-            " ",
-            "back",
-            " ",
-          ],
+          "rendered": "back",
           "type": "button",
         },
         Object {
@@ -591,19 +539,11 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "host",
           "props": Object {
-            "children": Array [
-              " ",
-              "next",
-              " ",
-            ],
+            "children": "next",
             "onClick": [Function],
           },
           "ref": null,
-          "rendered": Array [
-            " ",
-            "next",
-            " ",
-          ],
+          "rendered": "next",
           "type": "button",
         },
       ],

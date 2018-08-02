@@ -24,29 +24,43 @@ export const createTrack = file => {
 //this function modifies text messages to ready-to-display schedule object
 export function createTrackLogic(file) {
   const time = timeInterpret(file);
-  var freeActivities = time
-  var allTracks = []
-  var networkTime = 0
-  while(true) {
+  var freeActivities = time;
+  var allTracks = [];
+  var networkTime = 0;
+  while (true) {
     var track = trackCalculate(freeActivities, 180).next().value;
-    if(track) {
+    if (track) {
       freeActivities = calculateFreeActivities(freeActivities, track);
       const schedule = scheduleMaker(freeActivities, track);
       const totalTimeInSchedule = sumAllTrackTime(schedule);
-      if ( totalTimeInSchedule > networkTime ){ networkTime = totalTimeInSchedule }
-      freeActivities = calculateFreeActivities(freeActivities, removeLunchAndNetwork(schedule))
+      if (totalTimeInSchedule > networkTime) {
+        networkTime = totalTimeInSchedule;
+      }
+      freeActivities = calculateFreeActivities(
+        freeActivities,
+        removeLunchAndNetwork(schedule)
+      );
       const displaySchedule = trackDisplay(schedule, file);
-      allTracks.push(displaySchedule)
+      allTracks.push(displaySchedule);
     } else {
-      break
+      break;
     }
   }
-  allTracks = setNetworkTimeToLatest(allTracks, networkTime)
+  allTracks = setNetworkTimeToLatest(allTracks, networkTime);
+  if (allTracks.length === 0) {
+    return {
+      display: [
+        {
+          event: "Can't generate proper combination of schedule",
+          time: 'sorry'
+        }
+      ]
+    };
+  }
   return {
     display: allTracks
-  }
+  };
 }
-
 
 //action to reducer
 export function createTrackDispatch(schedule) {
@@ -57,7 +71,6 @@ export function createTrackDispatch(schedule) {
 }
 
 export function changeCurrentTrack(newTrack) {
-  console.log('dd')
   return {
     type: SHOW_TRACK_BY_CURRENT_TRACK,
     currentTrack: newTrack

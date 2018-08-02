@@ -95,12 +95,16 @@ export function removeLunchAndNetwork(track) {
 
 export function setNetworkTimeToLatest(allTracks, networkTime) {
   networkTime = networkTime - 60; //remove time set to network event by default
-  var hr = (Math.floor(networkTime / 60) + 9 ).toString()
-  var min = (networkTime % 60).toString()
-  if(min === '0') { min = '00'}
-  var formattedNetworkTime = hr
-    .concat('.')
-    .concat(min);
+  var hr = (Math.floor(networkTime / 60) + 9).toString();
+  var min = (networkTime % 60).toString();
+  if (parseInt(hr, 10) < 16) {
+    hr = '16';
+    min = '00';
+  } // check if network time is before 4pm
+  if (min === '0') {
+    min = '00';
+  } // incase min = 0 change to 00 for a nice display
+  var formattedNetworkTime = hr.concat('.').concat(min);
   var newAllTracks = [];
   allTracks.forEach(function(track) {
     track[track.length - 1].time = formattedNetworkTime;

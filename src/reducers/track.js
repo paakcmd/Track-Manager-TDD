@@ -14,7 +14,7 @@ const trackReducer = (state = initialState, action) => {
       return {
         ...state,
         display: action.schedule.display
-      }
+      };
     case SHOW_TRACK_BY_CURRENT_TRACK:
       return {
         ...state,

@@ -2,7 +2,11 @@ import {
   trackCalculate,
   scheduleMaker,
   timeSum,
-  trackDisplay
+  trackDisplay,
+  calculateFreeActivities,
+  sumAllTrackTime,
+  removeLunchAndNetwork,
+  setNetworkTimeToLatest
 } from './track-calculate';
 
 describe('function trackCalculate', () => {
@@ -136,5 +140,72 @@ User Interface CSS in Rails Apps 30min`;
       { time: '16.35', event: 'Network Event' }
     ];
     expect(trackDisplay(mockSchedule, mockText)).toEqual(expectedAction);
+  });
+});
+
+describe('calculateFreeActivities', () => {
+  it('calculates free activities', () => {
+    const mockAllActivities = [{ id: 0, time: 60 }, { id: 1, time: 60 }];
+    const mockUsedActivities = [{ id: 0, time: 60 }];
+    const expectedAction = [{ id: 1, time: 60 }];
+    expect(
+      calculateFreeActivities(mockAllActivities, mockUsedActivities)
+    ).toEqual(expectedAction);
+  });
+});
+
+describe('sumAllTrackTime', () => {
+  it('sum all the time from tracks', () => {
+    const mockTrack = [{ id: 0, time: 60 }, { id: 1, time: 60 }];
+    const expectedAction = 120;
+    expect(sumAllTrackTime(mockTrack)).toEqual(expectedAction);
+  });
+});
+
+describe('removeLunchAndNetwork', () => {
+  it('remove all id:string from tracks', () => {
+    const mockTrack = [
+      { id: 0, time: 60 },
+      { id: 'lunch', time: 60 },
+      { id: 0, time: 60 },
+      { id: 'network', time: 60 }
+    ];
+    const expectedAction = [{ id: 0, time: 60 }, { id: 0, time: 60 }];
+    expect(removeLunchAndNetwork(mockTrack)).toEqual(expectedAction);
+  });
+});
+
+describe('setNetworkTimeToLatest', () => {
+  it('sets time properly when schedule done before 16.00', () => {
+    const mockAllTracks = [[{ time: '12.00', event: 'Network Event' }]];
+    const mockNetworkTime = 420;
+    const expectedAction = [[{ time: '16.00', event: 'Network Event' }]];
+    expect(setNetworkTimeToLatest(mockAllTracks, mockNetworkTime)).toEqual(
+      expectedAction
+    );
+  });
+
+  it('sets time to 17.00 instead of 17.0', () => {
+    const mockAllTracks = [[{ time: '12.00', event: 'Network Event' }]];
+    const mockNetworkTime = 540;
+    const expectedAction = [[{ time: '17.00', event: 'Network Event' }]];
+    expect(setNetworkTimeToLatest(mockAllTracks, mockNetworkTime)).toEqual(
+      expectedAction
+    );
+  });
+
+  it('sets network event time of each schedule to the maximum one', () => {
+    const mockAllTracks = [
+      [{ time: '16.00', event: 'Network Event' }],
+      [{ time: '16.35', event: 'Network Event' }]
+    ];
+    const mockNetworkTime = 540;
+    const expectedAction = [
+      [{ time: '17.00', event: 'Network Event' }],
+      [{ time: '17.00', event: 'Network Event' }]
+    ];
+    expect(setNetworkTimeToLatest(mockAllTracks, mockNetworkTime)).toEqual(
+      expectedAction
+    );
   });
 });
