@@ -4,7 +4,11 @@ import { timeInterpret } from '../domain-logic/time-interpret';
 import {
   trackCalculate,
   scheduleMaker,
-  trackDisplay
+  trackDisplay,
+  calculateFreeActivities,
+  sumAllTrackTime,
+  removeLunchAndNetwork,
+  setNetworkTimeToLatest
 } from '../domain-logic/track-calculate';
 
 //this function read file then send result to another function then dispatch result to reducer
@@ -18,32 +22,31 @@ export const createTrack = file => {
 };
 
 //this function modifies text messages to ready-to-display schedule object
-export function createTrackLogic(result) {
-  const time = timeInterpret(result);
-  var allTrack = [...trackCalculate(time, 180)];
-  var lengthOfAllTrack = allTrack.length;
-  var track = trackCalculate(time, 180).next().value;
-  if (track) {
-    const schedule = scheduleMaker(time, track);
-    const displaySchedule = trackDisplay(schedule, result);
-    return {
-      display: displaySchedule,
-      allTrack: allTrack,
-      currentTrack: 1,
-      lengthOfAllTrack: lengthOfAllTrack,
-      file: result
-    };
-  } else {
-    return {
-      display: [
-        {
-          time: 'sorry',
-          event: "Can't generate proper combination of schedule"
-        }
-      ]
-    };
+export function createTrackLogic(file) {
+  const time = timeInterpret(file);
+  var freeActivities = time
+  var allTracks = []
+  var networkTime = 0
+  while(true) {
+    var track = trackCalculate(freeActivities, 180).next().value;
+    if(track) {
+      freeActivities = calculateFreeActivities(freeActivities, track);
+      const schedule = scheduleMaker(freeActivities, track);
+      const totalTimeInSchedule = sumAllTrackTime(schedule);
+      if ( totalTimeInSchedule > networkTime ){ networkTime = totalTimeInSchedule }
+      freeActivities = calculateFreeActivities(freeActivities, removeLunchAndNetwork(schedule))
+      const displaySchedule = trackDisplay(schedule, file);
+      allTracks.push(displaySchedule)
+    } else {
+      break
+    }
+  }
+  allTracks = setNetworkTimeToLatest(allTracks, networkTime)
+  return {
+    display: allTracks
   }
 }
+
 
 //action to reducer
 export function createTrackDispatch(schedule) {
@@ -53,13 +56,10 @@ export function createTrackDispatch(schedule) {
   };
 }
 
-export function showTrackByCurrentTrack(file, newTrack, combination) {
-  const time = timeInterpret(file);
-  const schedule = scheduleMaker(time, combination);
-  const displaySchedule = trackDisplay(schedule, file);
+export function changeCurrentTrack(newTrack) {
+  console.log('dd')
   return {
     type: SHOW_TRACK_BY_CURRENT_TRACK,
-    display: displaySchedule,
     currentTrack: newTrack
   };
 }

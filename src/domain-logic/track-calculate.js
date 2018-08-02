@@ -73,3 +73,38 @@ export function trackDisplay(schedule, text) {
   }
   return displaySchedule;
 }
+
+export function calculateFreeActivities(allActivities, usedActivities) {
+  var ids = new Set(usedActivities.map(({ id }) => id));
+  var freeActivities = allActivities.filter(({ id }) => !ids.has(id));
+  return freeActivities;
+}
+
+export function sumAllTrackTime(track) {
+  var totalTime = 0;
+  for (var i = 0; i < track.length; i++) {
+    totalTime += track[i].time;
+  }
+  return totalTime;
+}
+
+export function removeLunchAndNetwork(track) {
+  track = track.filter(({ id }) => !(typeof id === 'string'));
+  return track;
+}
+
+export function setNetworkTimeToLatest(allTracks, networkTime) {
+  networkTime = networkTime - 60; //remove time set to network event by default
+  var hr = (Math.floor(networkTime / 60) + 9 ).toString()
+  var min = (networkTime % 60).toString()
+  if(min === '0') { min = '00'}
+  var formattedNetworkTime = hr
+    .concat('.')
+    .concat(min);
+  var newAllTracks = [];
+  allTracks.forEach(function(track) {
+    track[track.length - 1].time = formattedNetworkTime;
+    newAllTracks.push(track);
+  });
+  return newAllTracks;
+}

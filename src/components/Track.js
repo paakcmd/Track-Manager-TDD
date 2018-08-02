@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import { createTrack, showTrackByCurrentTrack } from '../actions/track';
+import { createTrack, changeCurrentTrack } from '../actions/track';
 import { connect } from 'react-redux';
 
 export class Track extends Component {
-  display(track) {
+  display(track, currentTrack) {
     if (track) {
       if (track.length > 0) {
-        return track.map(trackLine => (
+        return track[currentTrack].map(trackLine => (
           <tr key={trackLine.time}>
             <td>{trackLine.time}</td>
             <td>{trackLine.event}</td>
@@ -26,11 +26,9 @@ export class Track extends Component {
     const track = this.props.track;
     const {
       display,
-      lengthOfAllTrack,
-      file,
-      currentTrack,
-      allTrack
+      currentTrack
     } = track;
+    console.log(display)
     return (
       <div>
         <input
@@ -48,40 +46,33 @@ export class Track extends Component {
               <th>Time</th>
               <th>Event</th>
             </tr>
-            {this.display(display)}
+            {this.display(display, currentTrack)}
           </tbody>
         </table>
         <h3>
-          {' '}
-          {lengthOfAllTrack ? `${currentTrack}/${lengthOfAllTrack}` : ''}{' '}
+          {display.length > 0 ? `${currentTrack + 1}/${display.length}` : ''}
         </h3>
         <button
           onClick={() =>
-            currentTrack > 1
-              ? this.props.showTrackByCurrentTrack(
-                  file,
+            currentTrack > 0
+              ? this.props.changeCurrentTrack(
                   currentTrack - 1,
-                  allTrack[currentTrack]
                 )
               : ''
           }
         >
-          {' '}
-          back{' '}
+          back
         </button>
         <button
           onClick={() =>
-            currentTrack < lengthOfAllTrack
-              ? this.props.showTrackByCurrentTrack(
-                  file,
-                  currentTrack + 1,
-                  allTrack[currentTrack]
+            currentTrack < display.length-1
+              ? this.props.changeCurrentTrack(
+                  currentTrack + 1
                 )
               : ''
           }
         >
-          {' '}
-          next{' '}
+          next
         </button>
       </div>
     );
@@ -92,5 +83,5 @@ export default connect(
   state => {
     return { track: state };
   },
-  { createTrack, showTrackByCurrentTrack }
+  { createTrack, changeCurrentTrack }
 )(Track);
